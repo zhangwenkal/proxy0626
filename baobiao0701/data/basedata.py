@@ -25,29 +25,59 @@ print(dic)
 {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five'}
 
 '''
+
 class data_base():
-    def read_csv(self):                #读取csv文件
-        path = os.getcwd()+'\\parkin.csv'
+    def __init__(self,file):
+        self.file=file
+
+    def read_csv(self):                                      #读取csv文件
+        path = os.getcwd()+'\\'+self.file
         f = open(path, encoding='utf-8')
-        data = pd.read_csv(f)
-        z=(data.shape)                 #返回数据的格式，数组，（行数，列数）
-        # aa=list(data)                #将header转换成序列
+        self.data = pd.read_csv(f)
+        z=(self.data.shape)                                  #返回数据的格式，数组，（行数，列数）
+        self.head=list(self.data)                            #将header转换成序列
         # print(aa)
 
         #遍历csv每行数据
         a,a1=[],[]
         for i in range(z[0]):
-            a1=list(data.ix[i,:])
-            a.append(a1)
-        print(a)
+            a1=list(self.data.ix[i,:])                     #将每行数据转换成序列
+            a.append(a1)                                   #将序列a1, 添加到一个新的序列里面
+        return a
 
-    def data_al(self):                #封装参数
+    def data_cut(self):                                    #将请求的参数和，响应的参数分开
+        receive_b=self.read_csv()
+        req_b,resp_b,h_url=[],[],[]                        #req_b,resp_b请求参数和响应参数，分别放到字典中
+        for b in receive_b:
+            req_b.append(b[1:b.index('nul1')])             #b.index('nul1')从列表中找出nul1第一个匹配项的索引位置
+            h_url.append(b[0])
+            resp_b.append(b[b.index('nul1')+1:])
+        # print(h_url)
+        # print(req_b)
+        # print(resp_b)
 
+        #将请求参数,响应参数分别整理成字典
+        req_dict, resp_dict = {}, {}
+        head1 = self.head[1:self.head.index('response')]
+        head2 = self.head[self.head.index('response') + 1:]
+        #print(head1,head2)
+        req_c, resp_c = [], []
+        for i1 in req_b:
+            req_c.append(dict(zip(head1, i1)))
 
-
+        for i2 in resp_b:
+            resp_c.append(dict(zip(head2, i2)))
+        print(req_c)
+        print(resp_c)
 
 if __name__=="__main__":
-    data_base().read_csv()
+        A=data_base()
+        A.data_cut()
+
+
+
+
+
 
 
 #数据统计
