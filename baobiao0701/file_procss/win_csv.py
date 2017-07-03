@@ -1,9 +1,11 @@
 import pandas as pd
 import os
 
-path = os.getcwd()+'\\data\\parkin.csv'
-f = open(path, encoding='utf-8')
-data = pd.read_csv(f)
+# path = os.getcwd()+'\\data\\parkin.csv'
+# f = open(path, encoding='utf-8')
+# data = pd.read_csv(f)
+s=os.path.abspath('data')
+print(s)
 #print(data)
 
 #数据统计
@@ -17,10 +19,10 @@ data = pd.read_csv(f)
 #第一行所有列的数据
 #print(data.ix[0,:])
 #print(type(data.ix[1,:]))
-a=list(data.ix[0,:])
-print(a)
-b=a.index('nan')                      #从列表中找出某个值第一个匹配项的索引位置
-print(b)
+# a=list(data.ix[0,:])
+# print(a)
+# b=a.index('nan')                      #从列表中找出某个值第一个匹配项的索引位置
+# print(b)
 #print(type(dict(data.ix[1,:])))
 
 #获取第2/4/6行的数据
