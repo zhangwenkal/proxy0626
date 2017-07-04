@@ -32,7 +32,7 @@ class data_base():
         self.file=file
 
     def read_csv(self):                                      #读取csv文件
-        path =os.path.abspath("data")+'\\'+self.file
+        path = "..\\data\\"+self.file
         f = open(path, encoding='utf-8')
         self.data = pd.read_csv(f)
         z=(self.data.shape)                                  #返回数据的格式，数组，（行数，列数）
@@ -68,12 +68,12 @@ class data_base():
 
         for i2 in resp_b:
             resp_c.append(dict(zip(head2, i2)))
-        # print(req_c)
-        # print(resp_c)
+        print(req_c)
+        print(resp_c)
         return h_url,req_c,resp_c
 
 if __name__=="__main__":
-        A=data_base()
+        A=data_base('parkout.csv')
         A.data_cut()
 
 
