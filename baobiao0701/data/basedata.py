@@ -35,13 +35,13 @@ class data_base():
         path = "..\\data\\"+self.file
         f = open(path, encoding='utf-8')
         self.data = pd.read_csv(f)
-        z=(self.data.shape)                                  #返回数据的格式，数组，（行数，列数）
+        self.z=(self.data.shape)                                  #返回数据的格式，数组，（行数，列数）
         self.head=list(self.data)                            #将header转换成序列
-        # print(aa)
+
 
         #遍历csv每行数据
         a,a1=[],[]
-        for i in range(z[0]):
+        for i in range(self.z[0]):
             a1=list(self.data.ix[i,:])                     #将每行数据转换成序列
             a.append(a1)                                   #将序列a1, 添加到一个新的序列里面
         return a
@@ -68,8 +68,17 @@ class data_base():
 
         for i2 in resp_b:
             resp_c.append(dict(zip(head2, i2)))
-        print(req_c)
-        print(resp_c)
+        # print(h_url)
+        # print(req_c)
+        # print(resp_c)
+        # print(self.z)
+        para=[]
+        for li in range(self.z[0]):
+            para.append([h_url[li],req_c[li],resp_c[li]])
+
+        for pa in para:
+            print(pa)
+
         return h_url,req_c,resp_c
 
 if __name__=="__main__":

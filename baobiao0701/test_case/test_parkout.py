@@ -26,7 +26,6 @@ class Tquery(unittest.TestCase):
         print('start test')
         #att=basedata.read_csv()
 
-
     def test_query(self):
         url,payload,b3=basedata_1.read_csv()
         r=requests.post(url,data=payload)
