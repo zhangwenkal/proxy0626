@@ -9,10 +9,10 @@ from data import basedata
 
 # Create your tests here.
 class Tquery(unittest.TestCase):
-    def __init__(self,req_test,res_test,re_url):
-        self.url=re_url
-        self.req_test=req_test
-        self.res_test=res_test
+    # def __init__(self,re_url,req_test,res_test):
+    #     self.url=re_url
+    #     self.req_test=req_test
+    #     self.res_test=res_test
 
     # def receive_param(self):
     #     B=basedata.data_base('parkout.csv')
@@ -24,15 +24,17 @@ class Tquery(unittest.TestCase):
 
     def setUp(self):
         print('start test')
-        #att=basedata.read_csv()
 
     def test_query(self):
-        url,payload,b3=basedata_1.read_csv()
-        r=requests.post(url,data=payload)
-        print(r.status_code)
-        result=r.json()
-        print(b3)
-        self.assertEqual(b3, result)
+        # url=self.url
+        # payload=self.req_test
+        # b3=self.res_test
+        B = basedata.data_base('parkout.csv')
+        receive_data = B.data_cut()
+        for re_data in receive_data:
+            r=requests.post(re_data[0],data=re_data[1])
+            result=r.json()
+            self.assertEqual(re_data[2], result)
 
 if __name__=='__main__':
     # testload=unittest.TestLoader().loadTestsFromTestCase(Tquery)
@@ -40,11 +42,20 @@ if __name__=='__main__':
     # fp=open("F:\\baobiao0621\\report\\result1.html",'wb')
     # runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title='出场报表',description='record_out')
     # runner.run(realtest)
-    B=basedata.data_base('parkout.csv')
+    '''
+     B=basedata.data_base('parkout.csv')
     receive_data=B.data_cut()
-    print(receive_data)
-    print(receive_data[0])
-    print(receive_data[1])
-    print(receive_data[2])
-    C=Tquery(receive_data[0],receive_data[1],receive_data[2])
+    #print(receive_data)
+    for re_data in receive_data:
+        C = Tquery(re_data[0], re_data[1], re_data[2])
+    '''
+
+    testload=unittest.TestLoader().loadTestsFromTestCase(C)
+    realtest=unittest.TestSuite(testload)
+    fp=open("..\\report\\result1.html",'wb')
+    runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title='出场报表',description='record_out')
+    runner.run(realtest)
+
+
+
 

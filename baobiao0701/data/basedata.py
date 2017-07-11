@@ -72,23 +72,14 @@ class data_base():
         # print(req_c)
         # print(resp_c)
         # print(self.z)
-        para=[]
+        paradata=[]
         for li in range(self.z[0]):
-            para.append([h_url[li],req_c[li],resp_c[li]])
-
-        for pa in para:
-            print(pa)
-
-        return h_url,req_c,resp_c
-
+            paradata.append([h_url[li],req_c[li],resp_c[li]])
+        #print(paradata)
+        return paradata
 if __name__=="__main__":
         A=data_base('parkout.csv')
         A.data_cut()
-
-
-
-
-
 
 
 #数据统计
