@@ -78,7 +78,7 @@ class data_base():
         #print(paradata)
         return paradata
 if __name__=="__main__":
-        A=data_base('parkout.csv')
+        A=data_base()
         A.data_cut()
 
 

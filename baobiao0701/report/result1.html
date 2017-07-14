@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>出场报表</h1>
-<p class='attribute'><strong>Start Time:</strong> 2017-06-22 20:48:23</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:00.012000</p>
-<p class='attribute'><strong>Status:</strong> Pass 1</p>
+<p class='attribute'><strong>Start Time:</strong> 2017-07-14 18:49:48</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:00.041000</p>
+<p class='attribute'><strong>Status:</strong> Failure 1</p>
 
 <p class='description'>record_out</p>
 </div>
@@ -221,31 +221,83 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='passClass'>
+<tr class='failClass'>
     <td>Tquery</td>
     <td>1</td>
-    <td>1</td>
     <td>0</td>
+    <td>1</td>
     <td>0</td>
     <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
 </tr>
 
-<tr id='pt1.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_query</div></td>
+<tr id='ft1.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_query</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
-        pass</a>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        fail</a>
 
-    <div id='div_pt1.1' class="popup_window">
+    <div id='div_ft1.1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.1: 
+ft1.1: Traceback (most recent call last):
+  File "F:/git/proxy0626/baobiao0701/test_case/test_parkout.py", line 38, in test_query
+    self.assertEqual(re_data[2], result)
+AssertionError: {'aba[13 chars]l': 0, 'avaiBalanceTotal': 27, 'actualBalanceT[29 chars]: 11} != {'aba[13 chars]l': 0.0, 'avaiBalanceTotal': 0.0, 'actualBalan[32 chars]': 0}
+- {'abateBalanceTotal': 0,
++ {'abateBalanceTotal': 0.0,
+?                       ++
+
+-  'actualBalanceTotal': 27,
+?                        ^^
+
++  'actualBalanceTotal': 0.0,
+?                        ^^^
+
+-  'avaiBalanceTotal': 27,
+?                      ^^
+
++  'avaiBalanceTotal': 0.0,
+?                      ^^^
+
+-  'parkoutListCount': 11}
+?                      ^^
+
++  'parkoutListCount': 0}
+?                      ^
+
+Traceback (most recent call last):
+  File "F:/git/proxy0626/baobiao0701/test_case/test_parkout.py", line 38, in test_query
+    self.assertEqual(re_data[2], result)
+AssertionError: {'aba[13 chars]l': 0, 'avaiBalanceTotal': 27, 'actualBalanceT[29 chars]: 11} != {'aba[13 chars]l': 0.0, 'avaiBalanceTotal': 0.0, 'actualBalan[32 chars]': 0}
+- {'abateBalanceTotal': 0,
++ {'abateBalanceTotal': 0.0,
+?                       ++
+
+-  'actualBalanceTotal': 27,
+?                        ^^
+
++  'actualBalanceTotal': 0.0,
+?                        ^^^
+
+-  'avaiBalanceTotal': 27,
+?                      ^^
+
++  'avaiBalanceTotal': 0.0,
+?                      ^^^
+
+-  'parkoutListCount': 11}
+?                      ^^
+
++  'parkoutListCount': 0}
+?                      ^
+
+
 
         </pre>
     </div>
@@ -257,8 +309,8 @@ pt1.1:
 <tr id='total_row'>
     <td>Total</td>
     <td>1</td>
-    <td>1</td>
     <td>0</td>
+    <td>1</td>
     <td>0</td>
     <td>&nbsp;</td>
 </tr>

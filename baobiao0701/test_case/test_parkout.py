@@ -34,6 +34,7 @@ class Tquery(unittest.TestCase):
         for re_data in receive_data:
             r=requests.post(re_data[0],data=re_data[1])
             result=r.json()
+            print(result)
             self.assertEqual(re_data[2], result)
 
 if __name__=='__main__':
@@ -50,7 +51,7 @@ if __name__=='__main__':
         C = Tquery(re_data[0], re_data[1], re_data[2])
     '''
 
-    testload=unittest.TestLoader().loadTestsFromTestCase(C)
+    testload=unittest.TestLoader().loadTestsFromTestCase(Tquery)
     realtest=unittest.TestSuite(testload)
     fp=open("..\\report\\result1.html",'wb')
     runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title='出场报表',description='record_out')
