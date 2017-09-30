@@ -50,7 +50,6 @@ if __name__=='__main__':
     for re_data in receive_data:
         C = Tquery(re_data[0], re_data[1], re_data[2])
     '''
-
     testload=unittest.TestLoader().loadTestsFromTestCase(Tquery)
     realtest=unittest.TestSuite(testload)
     fp=open("..\\report\\result1.html",'wb')
